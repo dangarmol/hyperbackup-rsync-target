@@ -1,4 +1,4 @@
-FROM --platform=linux/amd64 ubuntu:20.04
+FROM ubuntu:22.04
 
 RUN apt-get update
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -yq --no-install-recommends rsync
@@ -10,4 +10,7 @@ COPY rsyncd.conf /etc/rsyncd.conf
 COPY entrypoint.sh /var/entrypoint.sh
 COPY VERSION.txt /var/VERSION.txt
 
-ENTRYPOINT [ "/var/entrypoint.sh" ]
+RUN mkdir /var/synoback
+RUN chmod +x /var/entrypoint.sh
+
+ENTRYPOINT "/var/entrypoint.sh"
