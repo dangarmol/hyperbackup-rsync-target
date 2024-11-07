@@ -13,4 +13,4 @@ COPY VERSION.txt /var/VERSION.txt
 RUN mkdir /var/synoback
 RUN chmod +x /var/entrypoint.sh
 
-ENTRYPOINT "/var/entrypoint.sh"
+ENTRYPOINT ["/bin/bash", "/var/entrypoint.sh"]
